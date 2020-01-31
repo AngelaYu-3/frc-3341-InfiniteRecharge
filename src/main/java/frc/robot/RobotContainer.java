@@ -9,12 +9,16 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.MeasureColors;
+import frc.robot.commands.RotationControl;
 import frc.robot.subsystems.ColorSensor;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+//import edu.wpi.first.wpilibj.util.Color;
+//import edu.wpi.first.wpilibj2.command.CommandScheduler;
+//import frc.robot.commands.ExampleCommand;
+
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -24,10 +28,13 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  public ColorSensor sensor1 = new ColorSensor();
-  public MeasureColors measureColors = new MeasureColors(sensor1);
-  private final MeasureColors m_autoCommand = new MeasureColors(sensor1);
+  private final ExampleSubsystem m_exampleSubsystem;
+  public ColorSensor sensor1;
+  public MeasureColors measureColors;
+  public RotationControl rotational;
+  private final MeasureColors m_autoCommand;
+  
+  
 
 
 
@@ -37,8 +44,19 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+    System.out.println("a");
+    m_exampleSubsystem = new ExampleSubsystem();
+    System.out.println("b");
+  sensor1 = new ColorSensor();
+  System.out.println("c");
+  measureColors = new MeasureColors(sensor1);
+  System.out.println("d");
+  rotational = new RotationControl(sensor1);
+  System.out.println("e");
+  m_autoCommand = new MeasureColors(sensor1);
+    System.out.println("f");
     //CommandScheduler.getInstance().schedule(measureColors);
-  
+    
   }
 
   /**

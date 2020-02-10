@@ -41,10 +41,10 @@ public class ColorSensor extends SubsystemBase {
   private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
   private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
   private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
-  private final TalonSRX wheel = new TalonSRX(2);
-  public Joystick joy = new Joystick(0);
-  private final JoystickButton button = new JoystickButton(joy, 1);
-  public static ColorSensor instance;
+  private final TalonSRX wheel = new TalonSRX(3);
+  //public Joystick joy = new Joystick(0);
+  //public JoystickButton button = new JoystickButton(joy, 1);
+  private static ColorSensor instance;
 
 
   public ColorSensor()
@@ -63,12 +63,12 @@ public class ColorSensor extends SubsystemBase {
     System.out.println("color sensor constructor");
   }
 
-  public static ColorSensor getInstance(){
+ /* public static ColorSensor getInstance(){
     if (instance == null){
       instance = new ColorSensor();
     }
     return instance;
-  }
+  }*/
 
   public String printColors(){ //don't need to know if sensing RGB
     String RGB = "";
@@ -97,10 +97,11 @@ public class ColorSensor extends SubsystemBase {
 
     return colorString;
 
-    //colorString += " , confidence: " + match.confidence;
-   // colorString += m_colorSensor.hasReset();
-    //return colorString;
+    /*colorString += " , confidence: " + match.confidence();
+    colorString += m_colorSensor.hasReset();
+    return colorString;*/
   }
+
 
  public double velocity(){
 
@@ -108,12 +109,13 @@ public class ColorSensor extends SubsystemBase {
     return velocity;
  }
 
+
  public double getTicks(){
    return wheel.getSelectedSensorPosition();
  }
  public boolean getButton(){
    
-   return button.get();
+   return false;//button.get();
  }
 
  public void spinWheel(double speed){

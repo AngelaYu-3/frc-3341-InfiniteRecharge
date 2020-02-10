@@ -22,14 +22,13 @@ public class MeasureColors extends CommandBase {
   /**
    * Creates a new MeasureColors.
    */
+  private String colors;
 
-  private final ColorSensor m_sensor;
-
-  public MeasureColors(ColorSensor sensor) {
+  private final ColorSensor colorSensor;
+  public MeasureColors(ColorSensor subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
-    m_sensor = sensor;
-    Subsystem[] subsystems = {sensor};
-    addRequirements((edu.wpi.first.wpilibj2.command.Subsystem[]) subsystems);
+    colorSensor = subsystem;
+    addRequirements(colorSensor);
   }
 
   // Called when the command is initially scheduled.
@@ -40,8 +39,9 @@ public class MeasureColors extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    System.out.println(Robot.m_robotContainer.sensor1.matchColor());
-    //System.out.println(Robot.m_robotContainer.sensor1.printColors());
+    colors = colorSensor.matchColor();
+    System.out.println(colors);
+    System.out.println(colorSensor.printColors());
     //System.out.println(Robot.m_robotContainer.sensor1.)
   }
 

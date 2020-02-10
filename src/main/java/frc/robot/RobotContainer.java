@@ -8,12 +8,14 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.MeasureColors;
 import frc.robot.commands.RotationControl;
 import frc.robot.subsystems.ColorSensor;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 //import edu.wpi.first.wpilibj.util.Color;
 //import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -29,10 +31,15 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem;
-  public ColorSensor sensor1;
+  public ColorSensor colorSensor;
   public MeasureColors measureColors;
   public RotationControl rotational;
-  private final MeasureColors m_autoCommand;
+  private final RotationControl m_autoCommand;
+  public Joystick joy = new Joystick(0);
+  public JoystickButton button;
+
+
+
   
   
 
@@ -43,18 +50,20 @@ public class RobotContainer {
    */
   public RobotContainer() {
     // Configure the button bindings
-    configureButtonBindings();
     System.out.println("a");
     m_exampleSubsystem = new ExampleSubsystem();
     System.out.println("b");
-  sensor1 = new ColorSensor();
-  System.out.println("c");
-  measureColors = new MeasureColors(sensor1);
-  System.out.println("d");
-  rotational = new RotationControl(sensor1);
-  System.out.println("e");
-  m_autoCommand = new MeasureColors(sensor1);
+    colorSensor = new ColorSensor();
+    System.out.println("c");
+    measureColors = new MeasureColors(colorSensor);
+    System.out.println("d");
+    rotational = new RotationControl(colorSensor);
+    System.out.println("e");
+    m_autoCommand = new RotationControl(colorSensor);;
     System.out.println("f");
+    configureButtonBindings();
+    System.out.println("g");
+
     //CommandScheduler.getInstance().schedule(measureColors);
     
   }
@@ -66,6 +75,11 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
+    button = new JoystickButton(joy, 1);
+    button.whenPressed(new RotationControl(colorSensor));
+    //Robot.m_robotContainer.sensor1.button.whileActive( new RotationControl());
+    //button2 = new JoystickButton(joy,2);
+    //button2.whenPressed(new PrintCommand("Command");
   }
 
 

@@ -86,6 +86,9 @@ public class RobotContainer {
     button = new JoystickButton(joy, 1);
     button.whenPressed(new RotationControl());
     buttonRed.whenPressed(new ColorControl(1));
+    buttonBlue.whenPressed(new ColorControl(2));
+    buttonGreen.whenPressed(new ColorControl(3)); 
+    buttonYellow.whenPressed(new ColorControl(4));
     //Robot.m_robotContainer.sensor1.button.whileActive( new RotationControl());
     //button2 = new JoystickButton(joy,2);
     //button2.whenPressed(new PrintCommand("Command"

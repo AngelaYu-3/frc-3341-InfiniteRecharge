@@ -137,6 +137,21 @@ public class ColorSensor extends SubsystemBase {
      }
     }
    else if(n == 2){
+     if(matchColor() == "blue"){
+     wheel.set(ControlMode.PercentOutput, 0);
+     }
+   }
+   else if(n == 3){
+     if(matchColor() == "green"){
+       wheel.set(ControlMode.PercentOutput, 0);
+     }
+   }
+   else if(n == 4){
+     if(matchColor() == "yellow"){
+       wheel.set(ControlMode.PercentOutput, 0);
+     }
+   }
+   else{
      wheel.set(ControlMode.PercentOutput, 0.3);
    }
  }

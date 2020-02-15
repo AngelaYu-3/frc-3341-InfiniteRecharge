@@ -66,11 +66,12 @@ public class RobotContainer {
     System.out.println("d");
     rotational = new RotationControl();
     System.out.println("e");
-    m_autoCommand = new RotationControl();;
-    colorControl = new ColorControl (0);
+    m_autoCommand = new RotationControl();
     System.out.println("f");
-    configureButtonBindings();
+    colorControl = new ColorControl(0, colorSensor);
     System.out.println("g");
+    configureButtonBindings();
+    System.out.println("h");
 
     //CommandScheduler.getInstance().schedule(measureColors);
     
@@ -84,11 +85,15 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     button = new JoystickButton(joy, 1);
+    buttonRed = new JoystickButton(joy, 2);
+    buttonBlue = new JoystickButton(joy, 3);
+    buttonGreen = new JoystickButton(joy,4);
+    buttonYellow = new JoystickButton(joy,5);
     button.whenPressed(new RotationControl());
-    buttonRed.whenPressed(new ColorControl(1));
-    buttonBlue.whenPressed(new ColorControl(2));
-    buttonGreen.whenPressed(new ColorControl(3)); 
-    buttonYellow.whenPressed(new ColorControl(4));
+    buttonRed.whenPressed(new ColorControl(1, colorSensor));
+    buttonBlue.whenPressed(new ColorControl(2, colorSensor));
+    buttonGreen.whenPressed(new ColorControl(3, colorSensor)); 
+    buttonYellow.whenPressed(new ColorControl(4, colorSensor));
     //Robot.m_robotContainer.sensor1.button.whileActive( new RotationControl());
     //button2 = new JoystickButton(joy,2);
     //button2.whenPressed(new PrintCommand("Command"

@@ -33,7 +33,7 @@ import com.revrobotics.ColorMatch;
  * Add your docs here.
  */
 public class ColorSensor extends SubsystemBase {
-  // Put methods for controlling this subs ystem
+  // Put methods for controlling this subsystem
   // here. Call these from Commands.
   private final I2C.Port i2cPort;
   private final ColorSensorV3 m_colorSensor;
@@ -130,7 +130,7 @@ public class ColorSensor extends SubsystemBase {
  }
 
  public void colorControl(int n){
-   wheel.set(ControlMode.PercentOutput, 0.3);
+   wheel.set(ControlMode.PercentOutput, 0.2);
    if(n == 1){
      if(matchColor() == "red"){
      wheel.set(ControlMode.PercentOutput, 0);
@@ -152,7 +152,7 @@ public class ColorSensor extends SubsystemBase {
      }
    }
    else{
-     wheel.set(ControlMode.PercentOutput, 0.3);
+     wheel.set(ControlMode.PercentOutput, 0.2);
    }
  }
 

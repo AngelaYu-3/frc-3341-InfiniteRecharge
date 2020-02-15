@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.subsystems.ColorSensor;
 
 public class ColorControl extends CommandBase {
@@ -15,11 +16,12 @@ public class ColorControl extends CommandBase {
    * Creates a new ColorControl.
    */
   //private final ColorSensor colorSensor;
-  private int buttonNumber;
+  private int buttonNumber = 0;
 
-  public ColorControl(int n) {
+  public ColorControl(int n, ColorSensor sensor) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(ColorSensor.getInstance());
+    addRequirements(sensor);
+    buttonNumber = n; 
   }
 
   // Called when the command is initially scheduled.

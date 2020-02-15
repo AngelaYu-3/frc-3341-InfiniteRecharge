@@ -17,6 +17,8 @@ import com.ctre.phoenix.motorcontrol.StatusFrameEnhanced;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.ColorSensorV3;
 
+//import org.graalvm.compiler.java.GraphBuilderPhase.Instance;
+
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -63,12 +65,12 @@ public class ColorSensor extends SubsystemBase {
     System.out.println("color sensor constructor");
   }
 
- /* public static ColorSensor getInstance(){
+  public static ColorSensor getInstance(){
     if (instance == null){
       instance = new ColorSensor();
     }
     return instance;
-  }*/
+  }
 
   public String printColors(){ //don't need to know if sensing RGB
     String RGB = "";
@@ -125,6 +127,18 @@ public class ColorSensor extends SubsystemBase {
 
  public void resetSensorPosition(){
    wheel.setSelectedSensorPosition(0);
+ }
+
+ public void colorControl(int n){
+   wheel.set(ControlMode.PercentOutput, 0.3);
+   if(n == 1){
+     if(matchColor() == "red"){
+     wheel.set(ControlMode.PercentOutput, 0);
+     }
+    }
+   else if(n == 2){
+     wheel.set(ControlMode.PercentOutput, 0.3);
+   }
  }
 
  @Override

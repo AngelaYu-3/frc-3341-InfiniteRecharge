@@ -20,12 +20,10 @@ public class RotationControl extends CommandBase {
    * Creates a new RotationControl.
    */
   private double ticks;
-
-  private final ColorSensor colorSensor;
   
-  public RotationControl(ColorSensor subsystem) {
-    colorSensor = subsystem;
-    addRequirements(colorSensor);
+  public RotationControl() {
+
+    addRequirements(ColorSensor.getInstance());
     // Use addRequirements() here to declare subsystem dependencies.
    /*
     m_sensor = sensor;
@@ -38,8 +36,8 @@ public class RotationControl extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    colorSensor.resetSensorPosition();
-    System.out.println("start: " + colorSensor.getTicks());
+    ColorSensor.getInstance().resetSensorPosition();
+    System.out.println("start: " + ColorSensor.getInstance().getTicks());
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -48,9 +46,9 @@ public class RotationControl extends CommandBase {
 
    // if(ColorSensor.getInstance().getButton() == true){
     //  System.out.println("button state" +ColorSensor.getInstance().getButton());
-      System.out.println(colorSensor.getTicks());
-      colorSensor.spinWheel(0.3);
-      ticks=colorSensor.getTicks();
+      System.out.println(ColorSensor.getInstance().getTicks());
+      ColorSensor.getInstance().spinWheel(0.3);
+      ticks=ColorSensor.getInstance().getTicks();
     //}else{
       //ColorSensor.getInstance().spinWheel(0);
     //}
@@ -68,7 +66,7 @@ public class RotationControl extends CommandBase {
     if(Math.abs(ticks) > 4096 * 2)
     {
       System.out.println("finished");
-      colorSensor.spinWheel(0);
+      ColorSensor.getInstance().spinWheel(0);
       return true;  
     }
 

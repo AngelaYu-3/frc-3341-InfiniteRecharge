@@ -1,4 +1,4 @@
- /*----------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------*/
 /* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
@@ -8,23 +8,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
-import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Robot;
-import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.subsystems.ColorSensor;
 
-public class MeasureColors extends CommandBase {
+public class ColorControl extends CommandBase {
   /**
-   * Creates a new MeasureColors.
+   * Creates a new ColorControl.
    */
-  private String colors;
+  //private final ColorSensor colorSensor;
+  private int buttonNumber;
 
-  public MeasureColors() {
+  public ColorControl(int n) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(ColorSensor.getInstance());
   }
@@ -37,10 +30,10 @@ public class MeasureColors extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    colors = ColorSensor.getInstance().matchColor();
-    System.out.println(colors);
-    System.out.println(ColorSensor.getInstance().printColors());
-    //System.out.println(Robot.m_robotContainer.sensor1.)
+    
+       ColorSensor.getInstance().colorControl(buttonNumber);
+    
+   
   }
 
   // Called once the command ends or is interrupted.

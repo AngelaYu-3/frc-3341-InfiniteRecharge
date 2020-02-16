@@ -55,7 +55,7 @@ public class Robot extends TimedRobot {
     
     //System.out.println(m_robotContainer.sensor1.getColors());
     //System.out.println(Robot.m_robotContainer.sensor1.matchColor());
-    m_robotContainer.measureColors.schedule(); //already repeated by CommandScheduler, forcing schedule
+    //m_robotContainer.measureColors.schedule(); //already repeated by CommandScheduler, forcing schedule
     //m_robotContainer.rotational.schedule();
   
     // ColorSensor.getInstance().runOnceCommand().schedule();

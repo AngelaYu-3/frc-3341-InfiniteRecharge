@@ -22,7 +22,7 @@ public class MeasureColors extends CommandBase {
   /**
    * Creates a new MeasureColors.
    */
-  private String colors;
+
 
   public MeasureColors() {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -37,15 +37,14 @@ public class MeasureColors extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    colors = ColorSensor.getInstance().matchColor();
-    System.out.println(colors);
-    System.out.println(ColorSensor.getInstance().printColors());
+
     //System.out.println(Robot.m_robotContainer.sensor1.)
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    
   }
 
   // Returns true when the command should end.

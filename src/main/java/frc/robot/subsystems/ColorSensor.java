@@ -38,7 +38,7 @@ public class ColorSensor extends SubsystemBase {
   private final I2C.Port i2cPort;
   private final ColorSensorV3 m_colorSensor;
   Color detectedColor;
-  private final ColorMatch m_colorMatcher; 
+  private  ColorMatch m_colorMatcher; 
   private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
   private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
   private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
@@ -76,6 +76,7 @@ public class ColorSensor extends SubsystemBase {
     String RGB = "";
     detectedColor = m_colorSensor.getColor();
     RGB = "Red: " + detectedColor.red + ", Green: " + detectedColor.green + ", Blue: " + detectedColor.blue;
+    System.out.println(RGB);
     return RGB;
   }
 
@@ -96,7 +97,7 @@ public class ColorSensor extends SubsystemBase {
     } else {
       colorString = "unknown";
     }
-
+    //System.out.println(colorString);
     return colorString;
 
     /*colorString += " , confidence: " + match.confidence();

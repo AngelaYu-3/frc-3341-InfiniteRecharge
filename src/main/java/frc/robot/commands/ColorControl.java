@@ -17,6 +17,7 @@ public class ColorControl extends CommandBase {
    */
   //private final ColorSensor colorSensor;
   private int buttonNumber = 0;
+  private String colors;
 
   public ColorControl(int n, ColorSensor sensor) {
     // Use addRequirements() here to declare subsystem dependencies.
@@ -34,7 +35,12 @@ public class ColorControl extends CommandBase {
   public void execute() {
     
        ColorSensor.getInstance().colorControl(buttonNumber);
-    
+       ColorSensor.getInstance().printColors(); 
+       ColorSensor.getInstance().matchColor();  
+       colors = ColorSensor.getInstance().matchColor();
+       
+
+       
    
   }
 
